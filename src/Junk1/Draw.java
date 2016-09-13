@@ -7,11 +7,8 @@
  **/
 package Junk1;
 import javax.swing.*;
-import java.util.StringTokenizer;
-import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.*;
-import java.applet.*;
 import java.net.*;
 import java.awt.event.*;
 import java.io.*;   //for files
@@ -19,18 +16,14 @@ public class Draw
 {
     final static int SCREENHEIGHT = 768;
     final static int SCREENWIDTH = 1024;
-    public static boolean inOpen = true,outOpen = true;
+    public static boolean outOpen = true;
     public static Socket socket;
     public static InetAddress addr;
     public static int PORT = 8080;
     public static String ServerAddress = "172.24.53.80";//1.55";
     public static InetAddress localAddr;
-    public static StringBuffer serverInput = new StringBuffer("");
-    public static StringBuffer clientOutput = new StringBuffer("");
     public static BufferedReader in;
     public static PrintWriter out;
-    boolean success = true;
-    boolean first = true;
     TextArea txtOut = new TextArea();
     JPanel txtpanel=new JPanel();
     JTextField txt = new JTextField(25);
@@ -39,26 +32,15 @@ public class Draw
     JFrame frame=new JFrame();
     PadDraw drawPad = new PadDraw();
     JButton redButton = new JButton("Red");
-
     //Colors:
-    Color teal = new Color(1, 182, 173);
     Color navy = new Color(10, 73, 88);
-    Color cream = new Color(246,231,210);
-
-
-    Color red = new Color(182, 33, 45);
-    Color brown = new Color(127, 84, 23);
-    Color gray = new Color(102, 102, 102);
-    Color blue = new Color(51, 102, 153);
-    Color yellow = new Color(253, 184, 19);
-    Color green = new Color(65, 146, 75);
 
     public Draw()
 
     {
         Container content = frame.getContentPane();
         content.setLayout(new BorderLayout());
-        txtpanel.setSize(10,5);
+        txtpanel.setSize(10,50);
         txtpanel.setLayout(new BorderLayout());
         txtpanel.setBackground(navy);
         txtOut.setEditable(false);
@@ -209,16 +191,9 @@ public class Draw
         Color blue = new Color(51, 102, 153);
         Color yellow = new Color(253, 184, 19);
         Color green = new Color(65, 146, 75);
-        //	paintOut new PrintWriter(new BufferedWriter(new OutputStreamWriter(//make to data
-//	   	        socket.getOutputStream())),true);
         Image image;
-        //this is gonna be your image that you draw on
         Graphics2D graphics2D;
-        //this is what we'll be using to draw on
         int currentX, currentY, oldX, oldY;
-        //these are gonna hold our mouse coordinates
-
-        //Now for the constructors
         public PadDraw()
         {
             setDoubleBuffered(false);
