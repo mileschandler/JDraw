@@ -1,0 +1,2 @@
+# JDraw
+JDraw is a server to client based drawing game created in pure Java. Once two players connect to the server a game begins and one player is assigned as the drawer while the rest are the guessers. The objective of the game is to guess what the drawer is drawing first. The server distributes a random object for the drawer to draw. The guessers only have a limited time to guess what is being drawn and points are distributed based on how fast they can guess the word.
