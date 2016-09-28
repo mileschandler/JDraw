@@ -12,7 +12,7 @@ import java.awt.*;
 import java.net.*;
 import java.awt.event.*;
 import java.io.*;   //for files
-public class Draw
+public class Draw extends JFrame
 {
     final static int SCREENHEIGHT = 768;
     final static int SCREENWIDTH = 1024;
@@ -20,167 +20,388 @@ public class Draw
     public static Socket socket;
     public static InetAddress addr;
     public static int PORT = 8080;
-    public static String ServerAddress = "172.24.53.80";//1.55";
+    public static String ServerAddress = "100.65.20.7";//1.55";
     public static InetAddress localAddr;
     public static BufferedReader in;
     public static PrintWriter out;
-    TextArea txtOut = new TextArea();
-    JPanel txtpanel=new JPanel();
-    JTextField txt = new JTextField(25);
-    JPanel thkPanel=new JPanel();
-    JPanel colPanel=new JPanel();
-    JFrame frame=new JFrame();
+    JPanel jPanel1 = new javax.swing.JPanel();
     PadDraw drawPad = new PadDraw();
-    JButton redButton = new JButton("Red");
-    //Colors:
-    Color navy = new Color(10, 73, 88);
-
+    JPanel txtpanel = new javax.swing.JPanel();
+    JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
+    JTextArea txtOut = new javax.swing.JTextArea();
+    JTextField txt = new javax.swing.JTextField();
+    JPanel thkpanel = new javax.swing.JPanel();
+    JButton midThickButton = new javax.swing.JButton();
+    JButton incThickButton = new javax.swing.JButton();
+    JButton decThckButton = new javax.swing.JButton();
+    JPanel colPanel = new javax.swing.JPanel();
+    JButton jButton1 = new javax.swing.JButton();
+    JButton redButton = new javax.swing.JButton();
+    JButton yellowButton = new javax.swing.JButton();
+    JButton jButton8 = new javax.swing.JButton();
+    JButton jButton11 = new javax.swing.JButton();
+    JButton greenButton = new javax.swing.JButton();
+    JButton jButton14 = new javax.swing.JButton();
+    JButton blueButton = new javax.swing.JButton();
+    JButton jButton18 = new javax.swing.JButton();
+    JButton jButton21 = new javax.swing.JButton();
+    JButton jButton23 = new javax.swing.JButton();
+    JButton grayButton = new javax.swing.JButton();
+    JButton jButton25 = new javax.swing.JButton();
+    JButton brownButton = new javax.swing.JButton();
+    JButton clearButton = new javax.swing.JButton();
     public Draw()
 
     {
-        Container content = frame.getContentPane();
-        content.setLayout(new BorderLayout());
-        txtpanel.setSize(10,50);
-        txtpanel.setLayout(new BorderLayout());
-        txtpanel.setBackground(navy);
-        txtOut.setEditable(false);
-        content.add(txtpanel,BorderLayout.EAST);
-        txtpanel.add (txtOut,BorderLayout.NORTH);
-        txtpanel.add(txt, BorderLayout.SOUTH);
-        frame.setVisible(true);
-        txt.setSize(100,100);
-        txt.requestFocus();
-        drawPad.setLayout(new BorderLayout());
-        content.add(drawPad, BorderLayout.CENTER);
-        txt.addActionListener(new ActionListener()
-        {
 
+
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(145, 173, 194));
+
+        drawPad.setBackground(new java.awt.Color(247, 244, 237));
+
+        javax.swing.GroupLayout drawPadLayout = new javax.swing.GroupLayout(drawPad);
+        drawPad.setLayout(drawPadLayout);
+        drawPadLayout.setHorizontalGroup(
+                drawPadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 894, Short.MAX_VALUE)
+        );
+        drawPadLayout.setVerticalGroup(
+                drawPadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 768, Short.MAX_VALUE)
+        );
+
+        txtpanel.setBackground(new java.awt.Color(127, 145, 131));
+
+        txtOut.setBackground(new java.awt.Color(247, 244, 237));
+        txtOut.setColumns(20);
+        txtOut.setRows(5);
+        jScrollPane1.setViewportView(txtOut);
+
+        txt.setBackground(new java.awt.Color(247, 244, 237));
+        txt.requestFocus();
+        javax.swing.GroupLayout txtpanelLayout = new javax.swing.GroupLayout(txtpanel);
+        txtpanel.setLayout(txtpanelLayout);
+        txtpanelLayout.setHorizontalGroup(
+                txtpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(txtpanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(txtpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
+                                .addContainerGap())
+        );
+        txtpanelLayout.setVerticalGroup(
+                txtpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(txtpanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+
+        thkpanel.setBackground(new java.awt.Color(178, 144, 137));
+
+        midThickButton.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        midThickButton.setText("Mid");
+        midThickButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                midThickButtonActionPerformed(evt);
+            }
+        });
+
+        incThickButton.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        incThickButton.setText("Thick");
+        incThickButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incThickButtonActionPerformed(evt);
+            }
+        });
+
+        decThckButton.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        decThckButton.setText("Thin");
+        decThckButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decThckButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout thkpanelLayout = new javax.swing.GroupLayout(thkpanel);
+        thkpanel.setLayout(thkpanelLayout);
+        thkpanelLayout.setHorizontalGroup(
+                thkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(thkpanelLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addGroup(thkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(decThckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(incThickButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(midThickButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        thkpanelLayout.setVerticalGroup(
+                thkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(thkpanelLayout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(decThckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(159, 159, 159)
+                                .addComponent(midThickButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(incThickButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73))
+        );
+
+        colPanel.setBackground(new java.awt.Color(255, 153, 153));
+
+        jButton1.setBackground(new java.awt.Color(153, 0, 51));
+        jButton1.setForeground(new java.awt.Color(255, 0, 51));
+
+        redButton.setBackground(new java.awt.Color(255, 0, 51));
+        redButton.setText("jButton1");
+        redButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redButtonActionPerformed(evt);
+            }
+        });
+
+        yellowButton.setBackground(new java.awt.Color(255, 204, 0));
+        yellowButton.setForeground(new java.awt.Color(255, 204, 0));
+        yellowButton.setText("jButton1");
+        yellowButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yellowButtonActionPerformed(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(102, 204, 0));
+        jButton8.setText("jButton1");
+
+        jButton11.setForeground(new java.awt.Color(0, 204, 153));
+        jButton11.setText("jButton1");
+
+        greenButton.setBackground(new java.awt.Color(0, 153, 51));
+        greenButton.setText("jButton1");
+        greenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                greenButtonActionPerformed(evt);
+            }
+        });
+
+        jButton14.setBackground(new java.awt.Color(0, 255, 255));
+        jButton14.setText("jButton1");
+
+        blueButton.setBackground(new java.awt.Color(0, 51, 204));
+        blueButton.setText("jButton1");
+        blueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blueButtonActionPerformed(evt);
+            }
+        });
+
+        jButton18.setBackground(new java.awt.Color(102, 0, 204));
+        jButton18.setText("jButton1");
+
+        jButton21.setBackground(new java.awt.Color(255, 0, 255));
+        jButton21.setText("jButton1");
+
+        jButton23.setBackground(new java.awt.Color(204, 0, 51));
+        jButton23.setText("jButton1");
+
+        grayButton.setBackground(new java.awt.Color(0, 0, 0));
+        grayButton.setText("jButton1");
+        grayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grayButtonActionPerformed(evt);
+            }
+        });
+
+        jButton25.setForeground(new java.awt.Color(255, 255, 255));
+        jButton25.setText("jButton1");
+
+        brownButton.setBackground(new java.awt.Color(102, 0, 51));
+        brownButton.setText("jButton1");
+        brownButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brownButtonActionPerformed(evt);
+            }
+        });
+
+        clearButton.setText("jButton2");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout colPanelLayout = new javax.swing.GroupLayout(colPanel);
+        colPanel.setLayout(colPanelLayout);
+        colPanelLayout.setHorizontalGroup(
+                colPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(colPanelLayout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(redButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(yellowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(greenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(blueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(grayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brownButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105))
+                        .addGroup(colPanelLayout.createSequentialGroup()
+                                .addGap(485, 485, 485)
+                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        colPanelLayout.setVerticalGroup(
+                colPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(colPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(colPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(colPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(redButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(yellowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(greenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(blueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(grayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(brownButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(clearButton)
+                                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(thkpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(8, 8, 8)
+                                                .addComponent(drawPad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(colPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtpanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(colPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(drawPad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(thkpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        txt.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e)
             {
                 out.println(1+" "+txt.getText());
                 txt.setText("");
             }
-
-
-
         });
 
+        pack();
 
-        thkPanel.setBackground(navy);
-        drawPad.add(thkPanel, BorderLayout.SOUTH);
-
-
-
-        colPanel.setBackground(navy);
-        drawPad.add(colPanel,BorderLayout.NORTH);
-        JButton incThickButton = new JButton("Thick");
-        incThickButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("6");
-            }
-        });
-
-        JButton decThickButton = new JButton("Thin");
-        incThickButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("7");
-
-            }
-        });
-
-        JButton midThickButton = new JButton("Medium");
-        midThickButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("8");
-
-            }
-        });
+}
+        private void incThickButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
 
-        JButton clearButton = new JButton("Clear Scrn");
-        clearButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("9");
-
-            }
-        });
-        JButton redButton = new JButton("Red");
-        redButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("a");
-
-            }
-
-        });
-
-        JButton brownButton = new JButton("Brown");
-        brownButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("b");
-
-            }
-        });
-
-        JButton blueButton = new JButton("Blue");
-        blueButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("c");
-
-            }
-        });
-
-        JButton yellowButton = new JButton("Yellow");
-
-        yellowButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("d");
-
-            }
-        });
-
-        JButton greenButton = new JButton("Green");
-
-        greenButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("e");
-
-            }
-        });
-
-        JButton grayButton = new JButton("Gray");
-
-        grayButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                out.println("f");
-
-            }
-        });
-
-
-        colPanel.add(grayButton);
-        colPanel.add(redButton);
-        colPanel.add(greenButton);
-        colPanel.add(blueButton);
-        colPanel.add(brownButton);
-        colPanel.add(yellowButton);
-
-
-
-        thkPanel.add(clearButton);
-        thkPanel.add(decThickButton);
-        thkPanel.add(midThickButton);
-        thkPanel.add(incThickButton);
-
-        frame.setSize(SCREENWIDTH,SCREENHEIGHT);
-        frame.addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent e)
-            {
-                System.exit(0);
-            }
-        });
-
+        out.println("6");
     }
+
+        private void midThickButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("8");        // TODO add your handling code here:
+    }
+
+        private void decThckButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("7");        // TODO add your handling code here:
+    }
+
+        private void redButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("a");        // TODO add your handling code here:
+    }
+
+        private void brownButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("b");        // TODO add your handling code here:
+    }
+
+        private void blueButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("c");        // TODO add your handling code here:
+    }
+
+        private void yellowButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("d");        // TODO add your handling code here:
+    }
+
+        private void greenButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("e");
+        // TODO add your handling code here:
+    }
+
+        private void grayButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("f");        // TODO add your handling code here:
+    }
+
+        private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        out.println("9");        // TODO add your handling code here:
+    }
+
+
+
+
+
+
+    // </editor-fold>
+
+
+
 
     class PadDraw extends JComponent
     {
@@ -245,10 +466,6 @@ public class Draw
         {
             enable=n;
         }
-        public boolean getEnable()
-        {
-            return enable;
-        }
         public void paintComponent(Graphics g)
         {
             if(image == null){
@@ -260,13 +477,7 @@ public class Draw
             }
             g.drawImage(image, 0, 0, null);
         }
-        //this is the painting bit
-        //if it has nothing on it then
-        //it creates an image the size of the window
-        //sets the value of Graphics as the image
-        //sets the rendering
-        //runs the clear() method
-        //then it draws the image
+
 
 
         public void clear()
@@ -276,10 +487,7 @@ public class Draw
             graphics2D.setPaint(Color.BLACK);
             repaint();
         }
-        //this is the clear
-        //it sets the colors as white
-        //then it fills the window with white
-        //thin it sets the color back to black
+
         public void red()
         {
             graphics2D.setPaint(red);
@@ -326,9 +534,8 @@ public class Draw
     {
 //*******************************************************network
         localAddr =  InetAddress.getLocalHost();
-        BufferedReader input = new BufferedReader (new InputStreamReader(System.in));
         addr =InetAddress.getByName(ServerAddress);
-        frame.setVisible(true);
+        setVisible(true);
         //  initialize network output  **********************
         socket = new Socket(addr,PORT);//server.PORT);
         outOpen = true;
