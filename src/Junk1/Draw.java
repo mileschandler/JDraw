@@ -1,10 +1,3 @@
-/*
- *TODO
- *need to make the server game loop reset if there are 0 players
- *
- *change colors of pens
- *
- **/
 package Junk1;
 import javax.swing.*;
 import java.awt.BorderLayout;
